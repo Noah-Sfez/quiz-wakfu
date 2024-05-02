@@ -75,15 +75,21 @@ function showResults() {
     const mostFrequentClass = Object.keys(results).reduce((a, b) =>
         results[a] > results[b] ? a : b
     );
+    document.body.className = ""; // Réinitialise les classes existantes
+    document.body.classList.add(`body-${mostFrequentClass}`); // Ajoute la classe basée sur le résultat
+
     questionElement.innerText = `Votre classe de Wakfu est : ${mostFrequentClass}`;
     answerButtonsElement.innerHTML = `<button class="btn" onclick="resetQuiz()">Recommencer le quiz</button>`;
 }
+
 
 function resetQuiz() {
     localStorage.removeItem("results");
     currentQuestionIndex = 0;
     results = {};
+    document.body.className = ""; // Réinitialise le style du corps
     startQuiz();
 }
+
 
 startQuiz();
