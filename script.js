@@ -34,7 +34,17 @@ const questions = [
             { text: "Soigneur", class: "Eniripsa" },
             { text: "Tank", class: "Sadida" }
         ]
-    }
+    },
+    {
+        question: "Quel est votre animal préféré ?",
+        answers: [
+            { text: "Lion", class: "Iop" },
+            { text: "Aigle", class: "Cra" },
+            { text: "Panda", class: "Eniripsa" },
+            { text: "Chêne", class: "Sadida" }
+        ]
+    },
+
 ];
 let currentQuestionIndex = 0;
 const questionElement = document.getElementById("question");
