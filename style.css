@@ -15,6 +15,7 @@ body, html {
     align-items: center;
     background-color: #f4f4f9;
     font-size: 1.2rem;
+    overflow: hidden;
 }
 button {
     font-size: 1.2rem;
@@ -68,6 +69,17 @@ button {
   }
 }
 
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 0.5;
+    filter: brightness(0.1);
+  }
+}
+
 .cube-loader .cube-wrapper {
   position: absolute;
   width: 100%;
@@ -75,6 +87,7 @@ button {
   /* top: 0;
   left: 0; */
   transform-style: preserve-3d;
+  
 }
 
 .cube-loader .cube-wrapper .cube-span {
@@ -132,6 +145,53 @@ button {
 }
 
 
+
+/* effects */
+
+.magic-effects {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #00ffff;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #00ffff, 0 0 12px #00ffff;
+  opacity: 0; /* Commencez invisible */
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+/* Animation de scintillement */
+@keyframes flicker {
+  0%, 100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+
+.particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background-color: rgb(70, 104, 219);
+  border-radius: 50%;
+  opacity: 0.5;
+  will-change: transform; /* Optimisation pour les animations */
+}
+
+@keyframes fall {
+  from {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100vh); 
+    opacity: 0; 
+  }
+}
+
+/* Animation de rotation */
 
 
 @media (max-width: 700px) {

@@ -103,3 +103,57 @@ function resetQuiz() {
 
 
 startQuiz();
+
+
+function randomEffect() {
+    document.querySelectorAll(".magic-effects").forEach((effect) => {
+        // Position aléatoire sur la page
+        effect.style.left = `${Math.random() * window.innerWidth}px`;
+        effect.style.top = `${Math.random() * window.innerHeight}px`;
+
+        // Animation aléatoire
+        effect.style.animation = "flicker 2s infinite";
+
+        // Afficher l'effet brièvement
+        effect.style.opacity = 1;
+        setTimeout(() => {
+            effect.style.opacity = 0;
+        }, 2000); // Dure 2 secondes
+    });
+
+    // Répéter à intervalle aléatoire
+    setTimeout(randomEffect, Math.random() * 5000 + 2000); // Entre 2 et 7 secondes
+}
+
+// Démarrer l'animation
+randomEffect();
+
+
+function createParticle() {
+    const particle = document.createElement("div");
+    particle.classList.add("particle");
+    document.body.appendChild(particle);
+
+    // Position aléatoire en largeur et une durée de vie aléatoire
+    const size = Math.random() * 5 + 15; // Taille aléatoire entre 2 et 7px
+    const duration = Math.random() * 3 + 2; // Durée entre 2 et 5 secondes
+    const xPosition = Math.random() * window.innerWidth;
+
+    // Appliquer le style dynamique
+    particle.style.width = `${size}px`;
+    particle.style.height = `${size}px`;
+    particle.style.left = `${xPosition}px`;
+    particle.style.animation = `fall ${duration}s linear`;
+
+    // Nettoyer la particule après sa chute
+    setTimeout(() => {
+        particle.remove();
+    }, duration * 1000); // Convertir en millisecondes
+}
+
+function startFalling() {
+    setInterval(createParticle, 100); // Créer une particule toutes les 100 ms
+}
+
+// Commencer à faire tomber les particules
+startFalling();
